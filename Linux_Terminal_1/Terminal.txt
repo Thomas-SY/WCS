@@ -1,0 +1,10 @@
+dellinux@dellinux-Inspiron-N7010:[~]$ ls
+Bureau     examples.desktop  Modèles  Public  Téléchargements
+Documents  Images            Musique  snap    Vidéos
+dellinux@dellinux-Inspiron-N7010:[~]$ pwd
+/home/dellinux
+dellinux@dellinux-Inspiron-N7010:[~]$ cd Public
+dellinux@dellinux-Inspiron-N7010:[~/Public]$ ls
+dellinux@dellinux-Inspiron-N7010:[~/Public]$ pwd
+/home/dellinux/Public
+dellinux@dellinux-Inspiron-N7010:[~/Public]$ 
