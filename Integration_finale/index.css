@@ -1,0 +1,68 @@
+/* Navbar */
+.nav-item.active{
+    background-color: gray;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+    background-color:black;
+}
+
+.nav-link, a,.nav-link, a:hover{
+    color:black;
+}
+
+/* Effet image Cards */
+.thumbnail img{
+    opacity: 0.6;
+}
+
+.reward .img-text{
+    position: absolute;
+    top: 8%;
+    left: 21%;
+    border-style: solid;
+    border-radius: 5px;
+    background-color: white;
+    border-color: white;
+    opacity: 0.8;
+    z-index: 1;
+}
+
+.reward span{
+    color: orangered;
+}
+
+.dead .img-text{
+    position: absolute;
+    top: 25%;
+    left: 22%;
+    opacity: 0.8;
+    z-index: 1;
+}
+
+.thumbnail img:hover{
+    opacity: 1;
+    z-index: 1;
+}
+
+.thumbnail img:hover ~ .reward .img-text{
+    opacity: 0;
+    z-index: 0;
+    
+}
+
+.thumbnail img:hover ~ .dead .img-text{
+    opacity: 0;
+    z-index: 0;
+}
+
+/* Effet Text */
+.lorem{
+    height: 7rem;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.lorem:hover{
+    height: auto;
+}
