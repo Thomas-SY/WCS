@@ -5,6 +5,7 @@
     $messageTwo = "q8e?wsellecif@#?sel@#?setuotpazdsy0*b9+mw@x1vj"; // Variable String
     $messageThree = "aopi?sgnirts@#?sedhtg+p9l!"; // Variable String
     
+    //  Function Decoding
     function giveDecoding(string $message) : string {
         // var_dump($message);
         $indiceOne = strlen($message)/2;
