@@ -13,12 +13,12 @@
         // var_dump("2: " .$indiceTwo);
         $indiceThree = str_replace("@#?", " ", $indiceTwo);
         // var_dump("3: " . $indiceThree);
-
         $soluce = strrev($indiceThree);
         // var_dump($soluce);
         return $soluce;
     }
 
-echo giveDecoding($messageOne) . " " . giveDecoding($messageTwo) . " " . giveDecoding($messageThree);
+    //  Echo of Message
+    echo giveDecoding($messageOne) . " " . giveDecoding($messageTwo) . " " . giveDecoding($messageThree);
 
 ?>
