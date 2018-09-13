@@ -3,7 +3,7 @@
     $weapons = ["fists", "whip", "gun"];
     $opponentWeapon = $weapons[rand(0,2)];
 
-    // Test randow
+    // Test random
     // var_dump($opponentWeapon);
     
     // Contition weapons
