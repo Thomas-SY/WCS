@@ -14,7 +14,7 @@
     
         
         // define variables and set to empty values
-        $nameErr = $firstnameErr = $emailErr = $phoneErr = "";
+        $validation = $nameErr = $firstnameErr = $emailErr = $phoneErr = "";
         $name = $firstname = $email = $phone = $comment = "";
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -26,7 +26,7 @@
                 $name = test_input($_POST["user_name"]);
                 // check if name only contains letters and whitespace
                 if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
-                $nameErr = "Seules les lettres et les espaces blancs sont autorisés"; 
+                $nameErr = "Seules les lettres et les espaces blancs sont autorisés."; 
                 }
             }
 
@@ -37,7 +37,7 @@
                 $firstname = test_input($_POST["user_firstname"]);
                 // check if name only contains letters and whitespace
                 if (!preg_match("/^[a-zA-Z ]*$/",$firstname)) {
-                $firstnameErr = "Seules les lettres et les espaces blancs sont autorisés"; 
+                $firstnameErr = "Seules les lettres et les espaces blancs sont autorisés."; 
                 }
             }
         
@@ -48,13 +48,13 @@
                 $email = test_input($_POST["user_email"]);
                 // check if e-mail address is well-formed
                 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $emailErr = "Format d'email invalide"; 
+                $emailErr = "Format d'email invalide."; 
                 }
             }
 
             // phone control
             if (empty($_POST) && strlen($_POST["user_phone"])>10){
-                $phoneErr = "10 chiffres Minimum";
+                $phoneErr = "10 chiffres Minimum.";
             } else {
                 $phone = test_input($_POST["user_phone"]);
             }
@@ -64,12 +64,18 @@
                 $comment = "";
             } else {
                 $comment = test_input($_POST["user_message"]);
-            }    
+            }
+            
+            // message control
+            if (!empty($_POST["user_name"]) && !empty($_POST["user_firstname"]) && !empty($_POST["user_email"]) && !empty($_POST["user_phone"]) && !empty($_POST["user_message"])) {
+                $validation = "Le formulaire est validé.";
+            }
         
         }
         ?>
-
+        
         <form action="form.php" method="POST">
+            <h1><?php echo $validation; ?></h1>
             <div>
                 <label for="nom">Nom :</label>
                 <input type="text" id="nom" name="user_name" required>
@@ -187,7 +193,7 @@
         
         <div class= "returnPHP">
             <?php
-                echo "<h2>Your Input PHP:</h2>";
+                echo "<h2>Vos entrées en PHP sont:</h2>";
                 echo $name;
                 echo "<br>";
                 echo $firstname;
