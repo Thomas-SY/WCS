@@ -15,4 +15,6 @@ $hello = new Hello();
 
 echo $hello -> talk(), "<br>";
 
-echo SayHello::world();
+$helloE = new SayHello();
+
+echo $helloE -> world(), "<br>";
