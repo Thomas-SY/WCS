@@ -1,61 +1,147 @@
--- MySQL dump 10.13  Distrib 5.7.23, for Linux (x86_64)
+-- phpMyAdmin SQL Dump
+-- version 4.6.6deb5
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost    Database: thomas_s_wcs_lille
--- ------------------------------------------------------
--- Server version	5.7.23-0ubuntu0.18.04.1
+-- Client :  localhost:3306
+-- Généré le :  Jeu 27 Septembre 2018 à 12:29
+-- Version du serveur :  5.7.23-0ubuntu0.18.04.1
+-- Version de PHP :  7.2.10-0ubuntu0.18.04.1
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Current Database: `thomas_s_wcs_lille`
+-- Base de données :  `thomas_s_wcs_lille`
 --
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `thomas_s_wcs_lille` /*!40100 DEFAULT CHARACTER SET latin1 */;
-
-USE `thomas_s_wcs_lille`;
+-- --------------------------------------------------------
 
 --
--- Table structure for table `Elèves`
+-- Structure de la table `Ecole`
 --
 
-DROP TABLE IF EXISTS `Elèves`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Elèves` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `Ecole` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(32) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `Ecole`
+--
+
+INSERT INTO `Ecole` (`id`, `nom`) VALUES
+(1, 'Lille'),
+(2, 'Paris'),
+(3, 'Bordeaux');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Eleve`
+--
+
+CREATE TABLE `Eleve` (
+  `id` int(11) NOT NULL,
   `nom` varchar(32) DEFAULT NULL,
   `prenom` varchar(64) DEFAULT NULL,
   `adresse` text,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `langage_id` int(11) DEFAULT NULL,
+  `ecole_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `Elèves`
+-- Contenu de la table `Eleve`
 --
 
-LOCK TABLES `Elèves` WRITE;
-/*!40000 ALTER TABLE `Elèves` DISABLE KEYS */;
-INSERT INTO `Elèves` VALUES (1,'Vignerot','Jérôme','Lille'),(2,'Leschaeve','Vincent','Lille'),(3,'Delmas','Julie','Lille'),(4,'Sambon','Julien','Béthune'),(5,'Radureau','Florian','Lille');
-/*!40000 ALTER TABLE `Elèves` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+INSERT INTO `Eleve` (`id`, `nom`, `prenom`, `adresse`, `langage_id`, `ecole_id`) VALUES
+(1, 'Vignerot', 'Jérôme', 'Lille', 2, 1),
+(2, 'Leschaeve', 'Vincent', 'Lille', 1, 3),
+(3, 'Delmas', 'Julie', 'Lille', 1, 1),
+(4, 'Sambon', 'Julien', 'Béthune', 2, 2),
+(5, 'Radureau', 'Florian', 'Lille', 1, 1),
+(6, 'Google', 'Chrome', 'USA', 2, 2),
+(7, 'Pester', 'Lorie', 'Paris', 3, 3);
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Langage`
+--
+
+CREATE TABLE `Langage` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(32) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `Langage`
+--
+
+INSERT INTO `Langage` (`id`, `nom`) VALUES
+(1, 'PHP'),
+(2, 'JavaScript'),
+(3, 'Java');
+
+--
+-- Index pour les tables exportées
+--
+
+--
+-- Index pour la table `Ecole`
+--
+ALTER TABLE `Ecole`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `Eleve`
+--
+ALTER TABLE `Eleve`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `langage_id` (`langage_id`),
+  ADD KEY `ecole_id` (`ecole_id`);
+
+--
+-- Index pour la table `Langage`
+--
+ALTER TABLE `Langage`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT pour les tables exportées
+--
+
+--
+-- AUTO_INCREMENT pour la table `Ecole`
+--
+ALTER TABLE `Ecole`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT pour la table `Eleve`
+--
+ALTER TABLE `Eleve`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT pour la table `Langage`
+--
+ALTER TABLE `Langage`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- Contraintes pour les tables exportées
+--
+
+--
+-- Contraintes pour la table `Eleve`
+--
+ALTER TABLE `Eleve`
+  ADD CONSTRAINT `Eleve_ibfk_1` FOREIGN KEY (`langage_id`) REFERENCES `Langage` (`id`),
+  ADD CONSTRAINT `Eleve_ibfk_2` FOREIGN KEY (`ecole_id`) REFERENCES `Ecole` (`id`);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2018-09-23 16:00:12
