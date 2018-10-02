@@ -1,0 +1,15 @@
+{
+    "name": "tomy/quete_simple_mvc",
+    "authors": [
+        {
+            "name": "Thomas SY",
+            "email": "sy.thomas.pro@gmail.com"
+        }
+    ],
+
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    }
+}
