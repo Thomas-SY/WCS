@@ -1,0 +1,21 @@
+#slideshow {
+    position:relative;
+    height:200px;
+    width:350px;
+    overflow: hidden;
+    border: 3px solid #F2F2F2;
+}
+#slideshow ul li {
+    position:absolute;
+    top:0;
+    left:0;
+}
+
+button {
+    position:relative;
+    top:-115px;
+}
+
+#next {
+    margin-left: 297px;
+}
