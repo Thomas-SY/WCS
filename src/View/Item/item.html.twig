@@ -1,0 +1,24 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %} Items {% endblock %}
+
+{% block body %}
+    <section id="items">
+        <div class="container">
+            <h1 class="mt-4">Items</h1>
+
+            <table class="table table-striped">
+                {% for item in items %}
+                    <tr>
+                        <th>{{ item.id }}</th>
+                        <td><a href="item/{{ item.id }}" >{{ item.title }}</a></td>
+                        <td><a href="/edit/{{ item.id }}" class="btn btn-dark">Edit</a></td>
+                        <td><a href="/delete/{{ item.id }}" class="btn btn-danger">Delete</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+
+            <a class="btn btn-info" href="/item/add">Add Item</a>
+        </div>
+    </section>
+{% endblock %}

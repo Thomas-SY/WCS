@@ -1,13 +1,16 @@
 <?php
+
 // routing.php
 $routes = [
     'Item' => [ // Controller
-        ['index', '/', 'GET'], // action, url, HTTP method
-        ['show', '/item/{id}', 'GET'], // action, url, HTTP method
+        ['index', '/', ['GET', 'POST']], // action, url, HTTP method
+        ['show', '/item/{id:\d+}', ['GET', 'POST']], // action, url, HTTP method
+        ['add', '/item/add', ['GET', 'POST']], // action, url, HTTP method
+        ['edit', '/edit/{id:\d+}', ['GET', 'POST']], // action, url, HTTP method
+        ['delete', '/delete/{id:\d+}', ['GET', 'POST']] // action, url, method
     ],
-
     'Category' => [ // Controller
-        ['index', '/categorys', 'GET'], // action, url, HTTP method
-        ['show', '/category/{id}', 'GET'], // action, url, HTTP method
-    ],
+        ['index', '/categories', ['GET', 'POST']], // action, url, HTTP method
+        ['show', '/category/{id:\d+}', ['GET', 'POST']] // action, url, HTTP method
+    ]
 ];

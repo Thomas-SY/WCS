@@ -1,0 +1,31 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %} Edit Item {% endblock %}
+
+{% block body %}
+    <section>
+        <div class="container">
+            <div class="mt-4 row text-center">
+                <div class="col mt-2 mb-5">
+                    <h1>Edit : {{ item.title }}</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-5">
+                    <form method="POST" action="" class="text-center">
+                        <div class="form-group">
+                            <input type="hidden" value="{{ item.id }}" name="id">
+                            <label for="title">Title</label>
+                            <input type="text" value="{{ item.title }}" name="title" id="title" max="16" min="3" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-success btn-lg" value="Edit this item">
+                            <a href="/" class="btn btn-info btn-lg">Annuler</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </section>
+{% endblock %}
