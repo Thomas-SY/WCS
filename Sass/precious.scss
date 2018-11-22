@@ -1,0 +1,24 @@
+@mixin tailleRings ($height, $color) {
+	height: $height;
+	width: $height;
+	border: $height / 15 solid $color;
+	color: $color;
+	border-radius: 50%;
+	box-shadow: inset $height / 25 $height / 25 $height / 25, $height / 25 $height / 25 $height / 25;
+}
+
+.firstRing {
+	@include tailleRings(70px, #E87625);
+}
+
+.secRing {
+	@include tailleRings(200px, #E8CB25);
+}
+
+@for $i from 1 through 6 {
+	.thirdRing:nth-child(#{$i}) {
+		$size: 10px;
+		@include tailleRings(30px + $size * $i, #403D30);
+		margin-left: -25px;
+	}
+}
